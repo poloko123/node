@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+        $(document).ready(function (){
+        	$('body').hide();
+
+            var socket = io.connect();        	
+         	var name = prompt("Your name : ");
+         	
+         	if(name == '')
+         	{
+         		alert('Please input your name!');
+         		window.location.href = "/";
+         	}
+         	else 
+         	{
+         		$('body').show();
+         		socket.emit("got_a_new_user", { name : name});
+         	}
+
+         	$('#send').click(function(){
+         		socket.emit("send_message", { message : $('#message').val() , name : name });
+         	});
+         	
+         	socket.on("new_message", function (data){ 
+		 		$('#message_board').append(data.name + ' : ' + data.message + '<br>');
+			});
+         	
+       });
+    </script>
+</head>
+<body>
+	<h3>Conversation</h3>
+	<div id="message_board">
+		<% for (var x in messages) { %>
+	        <%= messages[x].messages %> <br>
+	    <% } %>
+	</div>
+	<input type="text" name="" id="message">
+	<button id="send">Send</button>
+</body>
+</html>

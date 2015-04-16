@@ -1,0 +1,29 @@
+{
+  "name": "Sample_Express",
+  "description": "Sample Express Application to test out using Package.json to install dependencies",
+  "dependencies": {
+    "body-parser": "^1.12.2",
+    "ejs": "1.0.0",
+    "express": "~4.10.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/poloko123/node.git"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "author": "erick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/poloko123/node/issues"
+  },
+  "homepage": "https://github.com/poloko123/node"
+}
